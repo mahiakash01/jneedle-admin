@@ -87,7 +87,6 @@ export default function BillboardsPage() {
           await queryClient.refetchQueries({ queryKey: ['billboards']})
         }
       } catch (error) {
-        console.log(error)
         toast.error("Error adding billboard!");
       }
     },
@@ -205,13 +204,13 @@ export default function BillboardsPage() {
           <div className="mt-10 flex flex-wrap items-center gap-5">
             {billboardItems.data &&
               billboardItems.data.map((item: any, index: number) => {
-                return <BillboardCard billboardItem={item.billboardItem} />;
+                return <BillboardCard billboardItem={item} key={index}/>;
               })}
               {
                 billboardItems.isLoading && (
                   <div className="flex gap-2">
-                    <Skeleton className="size-[200px]" />
-                    <Skeleton className="size-[200px]" />
+                    <Skeleton className="size-[200px]" key={1}/>
+                    <Skeleton className="size-[200px]" key={2}/>
                   </div>
                 )
               }
