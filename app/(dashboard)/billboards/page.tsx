@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BillboardFormData, billboardSchema } from "@/types/zod";
@@ -47,7 +46,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function BillboardsPage() {
   const queryClient = useQueryClient()
-  const [isFileUploading, setIsFileUploading] = useState(false);
 
   const form = useForm<BillboardFormData>({
     resolver: zodResolver(billboardSchema),
@@ -56,7 +54,7 @@ export default function BillboardsPage() {
       image: [],
     },
   });
-  const { uploadFiles, progresses, uploadedFiles, isUploading } =
+  const { uploadFiles, progresses } =
     useUploadFile();
 
   const billboardItems = useQuery({
@@ -77,13 +75,10 @@ export default function BillboardsPage() {
   const createBillboardMutation = useMutation({
     mutationFn: async (data: BillboardFormData) => {
       try {
-        console.log("uploading started!");
-        setIsFileUploading(true);
         const uploadedImage = await uploadFiles(data.image);
         console.log(uploadedImage);
 
         if (uploadedImage) {
-          setIsFileUploading(false);
           const newBillboardData: NewBillboardProps = {
             title: data.title,
             image: JSON.stringify(uploadedImage[0]),
@@ -92,6 +87,7 @@ export default function BillboardsPage() {
           await queryClient.refetchQueries({ queryKey: ['billboards']})
         }
       } catch (error) {
+        console.log(error)
         toast.error("Error adding billboard!");
       }
     },
@@ -209,7 +205,7 @@ export default function BillboardsPage() {
           <div className="mt-10 flex flex-wrap items-center gap-5">
             {billboardItems.data &&
               billboardItems.data.map((item: any, index: number) => {
-                return <BillboardCard key={index} billboardItem={item} />;
+                return <BillboardCard billboardItem={item.billboardItem} />;
               })}
               {
                 billboardItems.isLoading && (

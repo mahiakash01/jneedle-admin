@@ -18,9 +18,13 @@ import {
 } from "@/components/ui/form";
 import { createSession } from "@/appwrite/session";
 
+interface LoginFormProps {
+  email: string;
+  password: string;
+}
+
 export default function LoginForm() {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
 
   const form = useForm<LoginFormProps>({
     resolver: zodResolver(loginFormSchema),
@@ -30,11 +34,11 @@ export default function LoginForm() {
     },
   });
 
-  const login = async (data: any) => {
+  const login = async (data: LoginFormProps) => {
     console.log(data);
     const res = await createSession(data);
-    if(res.redirect){
-      router.push("/")
+    if (res.redirect) {
+      router.push("/");
     }
     if (res.error) {
       toast.error(res.error);
@@ -44,9 +48,8 @@ export default function LoginForm() {
   return (
     <div className="flex w-full relative items-center justify-center px-10">
       <div className="mx-auto z-10 text-gray-700 w-full max-w-[500px]">
-        
         <Form {...form}>
-          <form onSubmit={handleSubmit(login)} className="mt-8">
+          <form onSubmit={form.handleSubmit(login)} className="mt-8">
             <div className="space-y-5">
               <div>
                 <Label htmlFor="email">Email</Label>
@@ -60,15 +63,7 @@ export default function LoginForm() {
                           placeholder="Enter your email"
                           required
                           type="email"
-                          {...register("email", {
-                            required: true,
-                            validate: {
-                              matchPattern: (value) =>
-                                /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
-                                  value
-                                ) || "Invalid email",
-                            },
-                          })}
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage />
@@ -89,10 +84,7 @@ export default function LoginForm() {
                           placeholder="Enter your password"
                           required
                           type="password"
-                          {...register("password", {
-                            required: true,
-                            minLength: 6,
-                          })}
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage />
@@ -103,7 +95,7 @@ export default function LoginForm() {
 
               <button
                 type="submit"
-                className="relative flex justify-center items-center  h-12 w-full mx-auto text-center font-geist tracking-tighter  overflow-hidden rounded bg-neutral-950 px-5 py-2.5 text-white transition-all duration-300 hover:bg-neutral-800 hover:ring-2 hover:ring-neutral-800 hover:ring-offset-2"
+                className="relative flex justify-center items-center h-12 w-full mx-auto text-center font-geist tracking-tighter overflow-hidden rounded bg-neutral-950 px-5 py-2.5 text-white transition-all duration-300 hover:bg-neutral-800 hover:ring-2 hover:ring-neutral-800 hover:ring-offset-2"
               >
                 Sign in
               </button>
