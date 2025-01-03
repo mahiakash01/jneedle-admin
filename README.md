@@ -24,6 +24,8 @@ The **JNeedle Admin Dashboard** is a dedicated interface for administrators to e
 - **TypeScript**: Ensures type safety and maintainable code.
 - **Appwrite**: Backend services for authentication, real-time updates, and database management.
 - **TanStack Query**: Efficient data fetching, caching, and synchronization.
+- **TanStack Table**: Powerful library for building flexible and performant data tables.
+- **shadcn/ui**: Utility-first component library for building accessible UI components.
 - **Tailwind CSS**: Modern, utility-first styling for a responsive design.
 
 ---
