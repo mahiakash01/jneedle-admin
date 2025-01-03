@@ -1,37 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JNeedle Admin Dashboard
 
-## Getting Started
+![Admin Dashboard Banner](https://github.com/user-attachments/assets/3af8ffcd-af70-41ec-85ee-6e3aceb7ab74)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The **JNeedle Admin Dashboard** is a dedicated interface for administrators to efficiently manage the e-commerce platform. It includes tools for managing inventory, processing orders, and controlling website content.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Features
 
-## Learn More
+- **Inventory Management**: Add, edit, and delete products with ease.
+- **Order Management**: View and process customer orders.
+- **Content Management**: Control website content, including featured products and categories.
+- **Role-Based Authentication**: Secure admin-only access powered by Appwrite.
+- **Real-Time Updates**: Leverages Appwrite's real-time features for live data synchronization.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js**: Framework for a dynamic and fast admin interface.
+- **TypeScript**: Ensures type safety and maintainable code.
+- **Appwrite**: Backend services for authentication, real-time updates, and database management.
+- **TanStack Query**: Efficient data fetching, caching, and synchronization.
+- **Tailwind CSS**: Modern, utility-first styling for a responsive design.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📸 Screenshots
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# jneedle-admin
+### Dashboard Overview
+![Dashboard Overview](https://github.com/user-attachments/assets/ca35bb7a-1e0c-4fea-b287-179af89bcb26)
+
+
+### Inventory Management
+![Inventory Management](https://github.com/user-attachments/assets/a626bcec-c1b2-4c42-b850-07a7a1f5577b)
+
+
+### Content Management
+![Content Management](https://github.com/user-attachments/assets/0cc3faec-727c-42ec-9302-0fea56203279)
+
+
